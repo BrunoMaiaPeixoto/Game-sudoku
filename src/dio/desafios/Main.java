@@ -111,7 +111,6 @@ public class Main {
         var col = runUntilGetValidnumber(0,8);
         System.out.println("Informe a linha em que o numero sera inserido");
         var row = runUntilGetValidnumber(0,8);
-        System.out.printf("Informe o numero que vai sair da posição [%s,%s]\n", col, row);
         if(!board.clearValue(col, row)) {
             System.out.printf("A posição [%s,%s] tem um valor fixo\n", col, row);
         }
@@ -128,7 +127,7 @@ public class Main {
         var colSize = BOARD_LIMIT;
         for (int i = 0; i < BOARD_LIMIT; i++) {
             for (var col: board.getSpaces()){
-                args[argPos ++] = "" + (isNull(col.get(i).getActual()) ? " " : col.get(i).getActual());
+                args[argPos ++] = " " + (isNull(col.get(i).getActual()) ? " " : col.get(i).getActual());
             }
 
         }
@@ -156,7 +155,7 @@ public class Main {
         }
         System.out.println("Tem certeza que deseja limpar seu jogo e perder todo seu progresso?");
         var confirme = scanner.next();
-        while (!confirme.equalsIgnoreCase("sim") || !confirme.equalsIgnoreCase("nao")){
+        while (!confirme.equalsIgnoreCase("sim") && !confirme.equalsIgnoreCase("nao")){
             System.out.println("Informe 'sim''ou não'");
             confirme = scanner.next();
         }
