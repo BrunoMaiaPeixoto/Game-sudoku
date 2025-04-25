@@ -1,15 +1,18 @@
 package dio.desafios.ui.custom.input;
 
 import dio.desafios.model.Space;
+import dio.desafios.service.EventEnum;
+import dio.desafios.service.EventListener;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 
+import static dio.desafios.service.EventEnum.CLEAR_SPACE;
 import static java.awt.Font.PLAIN;
 
-public class NumberText extends JTextField {
+public class NumberText extends JTextField implements EventListener {
 
     private final Space space;
 
@@ -50,5 +53,12 @@ public class NumberText extends JTextField {
             }
 
         });
+    }
+
+    @Override
+    public void update(final EventEnum eventType) {
+        if (eventType.equals(CLEAR_SPACE) && (this.isEnabled())){
+        this.setText("");
+        }
     }
 }
